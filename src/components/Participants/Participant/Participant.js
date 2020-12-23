@@ -1,4 +1,4 @@
-export default props => {
+const Participant = props => {
 	return (
 		<div className="flex space-x-3">
 			<img
@@ -15,3 +15,5 @@ export default props => {
 		</div>
 	);
 };
+
+export default Participant;

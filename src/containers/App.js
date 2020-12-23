@@ -1,11 +1,11 @@
-import Heading from "./components/Heading/Heading";
-import Button from "./components/Button/Button";
-import FeatureTitle from "./components/FeatureTitle/FeatureTitle";
-import VotingArea from "./components/VotingArea/VotingArea";
-import Participants from "./components/Participants/Participants";
+import Heading from "../components/Heading/Heading";
+import Button from "../components/Button/Button";
+import FeatureTitle from "../components/FeatureTitle/FeatureTitle";
+import VotingArea from "../components/VotingArea/VotingArea";
+import Participants from "../components/Participants/Participants";
 import "./App.css";
 
-function App() {
+const App = () => {
 	return (
 		<main className="max-w-7xl mx-auto my-5 px-4 sm:px-6 lg:px-8">
 			<Heading />
@@ -25,6 +25,6 @@ function App() {
 			</div>
 		</main>
 	);
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-export default props => {
+const VotingArea = props => {
 	const buttons = props.options.map(option => {
 		return (
 			<button
@@ -18,3 +18,5 @@ export default props => {
 		</div>
 	);
 };
+
+export default VotingArea;

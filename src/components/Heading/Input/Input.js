@@ -1,4 +1,4 @@
-export default props => {
+const Input = props => {
 	return (
 		<div>
 			<label for={props.label} class="block text-sm font-medium text-gray-700">
@@ -15,3 +15,5 @@ export default props => {
 		</div>
 	);
 };
+
+export default Input;

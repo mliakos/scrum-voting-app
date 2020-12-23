@@ -1,7 +1,7 @@
 import Participant from "./Participant/Participant";
 import Button from "../Button/Button";
 
-export default props => {
+const Participants = props => {
 	const participantsList = (
 		<div className="flow-root">
 			<ul className="divide-y divide-gray-200">
@@ -34,3 +34,5 @@ export default props => {
 		</div>
 	);
 };
+
+export default Participants;

@@ -1,4 +1,4 @@
-export default props => {
+const Button = props => {
 	return (
 		<button
 			type="button"
@@ -8,3 +8,5 @@ export default props => {
 		</button>
 	);
 };
+
+export default Button;
