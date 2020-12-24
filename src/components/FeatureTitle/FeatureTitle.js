@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 const FeatureTitle = props => {
 	const [title, setTitle] = useState("");
 
+	// TODO: use useDebounce here too
+
 	useEffect(() => {
 		(async () => {
 			const res = await fetch(
