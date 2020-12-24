@@ -25,6 +25,8 @@ const Users = props => {
 
 			dispatch(addUser(payload));
 
+			//TODO: Store only ID, get rest from firebase
+
 			// Save in local storage
 			localStorage.setItem("user", JSON.stringify(payload));
 		};

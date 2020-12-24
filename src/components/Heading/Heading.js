@@ -6,6 +6,7 @@ const Heading = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
+	//TODO: Add debounce
 	const handleUserUpdate = event => {
 		const currentUser = JSON.parse(localStorage.getItem("user"));
 		const user = state.users.find(user => user.id === currentUser.id);
