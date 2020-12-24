@@ -6,10 +6,12 @@ const VotingArea = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
+	const currentUser = JSON.parse(localStorage.getItem("user"));
+	const user = state.users.find(user => user.id === currentUser.id);
+	const { vote } = currentUser;
+
 	const handleVoteUpdate = event => {
-		const currentUser = JSON.parse(localStorage.getItem("user"));
-		const user = state.users.find(user => user.id === currentUser.id);
-		const updatedUser = { ...user, vote: event.target.innerText };
+		const updatedUser = { ...user, vote: Number(event.target.innerText) };
 
 		dispatch(updateUser(updatedUser));
 
@@ -18,10 +20,14 @@ const VotingArea = props => {
 	};
 
 	const buttons = props.options.map((option, index) => {
+		const selectedClass =
+			vote === Number(option)
+				? "outline-none ring-2 ring-offset-2 ring-indigo-500"
+				: "";
 		return (
 			<button
 				type="button"
-				className="px-4 py-2 m-2 inline-flex items-center  border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				className={`${selectedClass} px-4 py-2 m-2 inline-flex items-center  border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none`}
 				key={index}
 				onClick={event => handleVoteUpdate(event)}
 			>
