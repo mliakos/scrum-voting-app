@@ -13,7 +13,7 @@ const App = () => {
 				<div className="flex justify-center">
 					<Button title="Reset" />
 				</div>
-				<div className="flex justify-center">
+				<div className="flex-col justify-center">
 					<FeatureTitle />
 				</div>
 				<div className="flex justify-center">
