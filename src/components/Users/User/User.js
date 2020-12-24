@@ -1,4 +1,10 @@
-const Participant = props => {
+import { useSelector } from "react-redux";
+
+const User = props => {
+	const state = useSelector(state => state.users);
+	const hiddenVote = props.vote ? "Voted!" : "";
+	const shownVote = props.vote || "-";
+
 	return (
 		<div className="flex space-x-3">
 			<img
@@ -9,11 +15,13 @@ const Participant = props => {
 			<div className="flex-1 space-y-1">
 				<div className="flex items-center justify-between">
 					<h3 className="text-sm font-medium">{props.name}</h3>
-					<p className="text-sm text-gray-500">Voted!</p>
+					<p className="text-sm text-gray-500">
+						{state.hidden ? hiddenVote : shownVote}
+					</p>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Participant;
+export default User;

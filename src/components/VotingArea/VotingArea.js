@@ -1,21 +1,25 @@
+import Card from "../Card/Card";
+
 const VotingArea = props => {
-	const buttons = props.options.map(option => {
+	const buttons = props.options.map((option, index) => {
 		return (
 			<button
 				type="button"
-				className="px-4 m-2 inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				className="px-4 py-2 m-2 inline-flex items-center  border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				key={index}
 			>
 				{option}
 			</button>
 		);
 	});
+
 	return (
-		<div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 max-w-lg my-10 p-5">
+		<Card className="p-5 my-10">
 			<h3 className="text-lg leading-6 font-medium text-gray-900 inline">
 				Cast your vote:
 			</h3>
 			{buttons}
-		</div>
+		</Card>
 	);
 };
 

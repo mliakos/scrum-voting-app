@@ -8,7 +8,7 @@ const Heading = props => {
 					Scrum Voting App
 				</h2>
 			</div>
-			<div className="mt-4 flex md:mt-0 md:ml-4 justify-center">
+			<div className="mt-10 flex md:mt-0 md:ml-4 justify-center">
 				<Input label="Username" placeholder="Type a username..." />
 			</div>
 		</div>

@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const FeatureTitle = props => {
+	const [title, setTitle] = useState("");
+
+	useEffect(() => {
+		(async () => {
+			const res = await fetch(
+				"https://test-87a57-default-rtdb.firebaseio.com/",
+				{
+					mode: "no-cors"
+				}
+			);
+		})();
+
+		// return () => {
+		// 	cleanup;
+		// };
+	}, [title]);
+
+	const handleTitleChange = event => {
+		setTitle(event.target.value);
+	};
+
 	return (
-		<React.Fragment>
-			<h2 className="text-lg leading-6 font-medium text-gray-900 inline">
-				Feature
-			</h2>
-			<textarea
-				class="w-full px-3 py-2 my-2 text-gray-700 border shadow rounded-lg focus:outline-none"
-				rows="4"
-			></textarea>
-		</React.Fragment>
+		<input
+			className="items-center mt-10 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+			onChange={handleTitleChange}
+			value={title}
+			placeholder="Feature title"
+		/>
 	);
 };
 

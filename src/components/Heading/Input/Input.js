@@ -1,10 +1,13 @@
 const Input = props => {
 	return (
 		<div>
-			<label for={props.label} class="block text-sm font-medium text-gray-700">
+			<label
+				htmlFor={props.label}
+				className="block text-sm font-medium text-gray-700"
+			>
 				{props.label}
 			</label>
-			<div class="mt-1">
+			<div>
 				<input
 					type="text"
 					name={props.label}
