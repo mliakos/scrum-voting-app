@@ -12,6 +12,17 @@ const usersReducer = (state = initState, action) => {
 			};
 		}
 
+		case "UPDATE_USER": {
+			return {
+				...state,
+				users: [...state.users].map(user => {
+					if (user.id !== action.payload.id) return user;
+
+					return action.payload;
+				})
+			};
+		}
+
 		case "SET_HIDDEN": {
 			return {
 				...state,

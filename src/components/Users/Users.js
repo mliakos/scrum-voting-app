@@ -13,7 +13,7 @@ const Users = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	// First visit handling
+	// First page visit handling
 	useEffect(() => {
 		const createDefaultUser = () => {
 			const id = generateId();
@@ -40,7 +40,6 @@ const Users = props => {
 	}, []);
 
 	const revealVotes = () => {
-		console.log("test");
 		dispatch(setHidden(false));
 	};
 
