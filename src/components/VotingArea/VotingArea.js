@@ -6,10 +6,11 @@ const VotingArea = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUser = JSON.parse(localStorage.getItem("user"));
-	const user = state.users.find(user => user.id === currentUser.id);
+	const userId = JSON.parse(localStorage.getItem("userId"));
+	const user = state.users.find(user => user.id === userId);
 
-	const { vote } = currentUser;
+	// const { vote } = currentUser;
+	const vote = null;
 
 	const handleVoteUpdate = event => {
 		const updatedUser = { ...user, vote: Number(event.target.innerText) };

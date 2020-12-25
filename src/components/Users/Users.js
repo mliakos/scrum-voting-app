@@ -4,40 +4,34 @@ import Card from "../Card/Card";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import addUser from "../../store/actions/users/addUser";
-import setHidden from "../../store/actions/users/setHidden";
 
-import generateId from "../../utils/generateId";
+import addUser from "../../store/actions/users/addUser";
+import loadUser from "../../store/actions/users/loadUser";
+
+import setHidden from "../../store/actions/users/setHidden";
 
 const Users = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUser = JSON.parse(localStorage.getItem("user"));
+	const userId = JSON.parse(localStorage.getItem("userId"));
 
 	// First page visit handling
 	useEffect(() => {
 		const createDefaultUser = () => {
-			const id = generateId();
+			const suffix = Math.random().toString(20).substr(2, 6);
 			const payload = {
-				id,
-				username: `user${id}`,
-				vote: null
+				username: `user_${suffix}`
 			};
-
+			console.log(state);
 			dispatch(addUser(payload));
-
-			//TODO: Store only ID, get rest from firebase
-
-			// Save in local storage
-			localStorage.setItem("user", JSON.stringify(payload));
 		};
 
 		// Either create user, or use existing one
-		if (localStorage.getItem("user") === null) {
+		if (localStorage.getItem("userId") === null) {
 			createDefaultUser();
 		} else {
-			dispatch(addUser(currentUser));
+			dispatch(loadUser({ userId }));
 		}
 	}, []);
 
@@ -45,23 +39,31 @@ const Users = props => {
 		dispatch(setHidden(false));
 	};
 
-	const UsersList = (
-		<div className="flow-root">
-			<ul className="divide-y divide-gray-200">
-				{state.users.map((user, index) => {
-					return (
-						<li className="py-4" key={user.id}>
-							<User
-								name={user.username}
-								vote={user.vote}
-								own={currentUser.id === user.id}
-							/>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
-	);
+	const UsersList = (() => {
+		const loadingMsg = userId
+			? "Loading user..."
+			: "Generating default user...";
+
+		return (
+			<div className="flow-root">
+				<ul className="divide-y divide-gray-200">
+					{state.users.length
+						? state.users.map(user => {
+								return (
+									<li className="py-4" key={user.id}>
+										<User
+											name={user.username}
+											vote={user.vote}
+											own={userId === user.id}
+										/>
+									</li>
+								);
+						  })
+						: loadingMsg}
+				</ul>
+			</div>
+		);
+	})();
 
 	return (
 		<Card className="my-10">

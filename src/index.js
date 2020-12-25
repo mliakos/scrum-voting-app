@@ -4,16 +4,34 @@ import "./index.css";
 import App from "./containers/App";
 
 import rootReducer from "./store/reducers/index";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+import { getFirebase } from "react-redux-firebase";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import config from "./config/firebase";
+
+import firebase from "firebase/app";
+import "firebase/database";
+
+const middlewares = [thunk.withExtraArgument(getFirebase)];
+
+const store = createStore(
+	rootReducer,
+	compose(applyMiddleware(...middlewares))
+);
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<ReactReduxFirebaseProvider
+				firebase={firebase}
+				config={config}
+				dispatch={store.dispatch}
+			>
+				<App />
+			</ReactReduxFirebaseProvider>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
