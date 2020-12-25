@@ -1,4 +1,4 @@
-import { SET_HIDDEN } from "./types";
+import { SET_HIDDEN } from "../../constants/users";
 
 const setHidden = payload => {
 	return {

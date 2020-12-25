@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import updateUser from "../../store/actions/updateUser";
+import updateUser from "../../store/actions/users/updateUser";
 import { useDispatch, useSelector } from "react-redux";
 
 const VotingArea = props => {
@@ -8,6 +8,7 @@ const VotingArea = props => {
 
 	const currentUser = JSON.parse(localStorage.getItem("user"));
 	const user = state.users.find(user => user.id === currentUser.id);
+
 	const { vote } = currentUser;
 
 	const handleVoteUpdate = event => {

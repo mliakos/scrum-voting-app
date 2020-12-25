@@ -1,10 +1,10 @@
-import { ADD_USER } from "./types";
+import { UPDATE_TITLE } from "../../constants/feature";
 
 const addUser = payload => (dispatch, getState) => {
 	// async
 
 	dispatch({
-		type: ADD_USER,
+		type: UPDATE_TITLE,
 		payload
 	});
 };

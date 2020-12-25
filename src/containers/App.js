@@ -5,14 +5,26 @@ import VotingArea from "../components/VotingArea/VotingArea";
 import Users from "../components/Users/Users";
 import "./App.css";
 
+import { useDispatch } from "react-redux";
+import resetVotes from "../store/actions/users/resetVotes";
+import setHidden from "../store/actions/users/setHidden";
+import updateTitle from "../store/actions/feature/updateTitle";
+
 const App = () => {
-	// TODO: Outsource Input and Button in separate 'base' components
+	const dispatch = useDispatch();
+
+	const handleReset = () => {
+		dispatch(resetVotes());
+		dispatch(updateTitle(""));
+		dispatch(setHidden(true));
+	};
+
 	return (
 		<main className="max-w-7xl mx-auto my-5 px-4 sm:px-6 lg:px-8">
 			<Heading />
 			<div className="flex flex-col flex-wrap max-w-3xl mx-auto mt-10">
 				<div className="flex justify-center">
-					<Button title="Reset" />
+					<Button title="Reset" handleClick={handleReset} />
 				</div>
 				<div className="flex justify-center">
 					<FeatureTitle />

@@ -4,14 +4,16 @@ import Card from "../Card/Card";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import addUser from "../../store/actions/addUser";
-import setHidden from "../../store/actions/setHidden";
+import addUser from "../../store/actions/users/addUser";
+import setHidden from "../../store/actions/users/setHidden";
 
 import generateId from "../../utils/generateId";
 
 const Users = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
+
+	const currentUser = JSON.parse(localStorage.getItem("user"));
 
 	// First page visit handling
 	useEffect(() => {
@@ -35,9 +37,7 @@ const Users = props => {
 		if (localStorage.getItem("user") === null) {
 			createDefaultUser();
 		} else {
-			const user = JSON.parse(localStorage.getItem("user"));
-
-			dispatch(addUser(user));
+			dispatch(addUser(currentUser));
 		}
 	}, []);
 
@@ -51,7 +51,11 @@ const Users = props => {
 				{state.users.map((user, index) => {
 					return (
 						<li className="py-4" key={user.id}>
-							<User name={user.username} vote={user.vote} />
+							<User
+								name={user.username}
+								vote={user.vote}
+								own={currentUser.id === user.id}
+							/>
 						</li>
 					);
 				})}
