@@ -22,7 +22,6 @@ const FeatureTitle = props => {
 	// }, [title]);
 
 	const handleTitleChange = event => {
-		console.log(event);
 		dispatch(updateTitle(event.target.value));
 	};
 

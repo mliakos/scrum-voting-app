@@ -13,8 +13,7 @@ const addUser = payload => (dispatch, getState, getFirebase) => {
 			dispatch({
 				type: ADD_USER,
 				payload: {
-					...payload,
-					id: ref.key
+					[ref.key]: payload
 				}
 			});
 		});
