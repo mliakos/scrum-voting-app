@@ -7,6 +7,7 @@ const Input = props => {
 			placeholder={props.placeholder}
 			onChange={props.handleChange}
 			value={props.value}
+			disabled={props.disabled}
 		/>
 	);
 };

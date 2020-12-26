@@ -13,6 +13,8 @@ const loadTitle = () => async (dispatch, getState, getFirebase) => {
 			payload: title
 		});
 	}
+
+	Promise.resolve();
 };
 
 export default loadTitle;

@@ -10,8 +10,14 @@ const FeatureTitle = props => {
 	const state = useSelector(state => state.feature);
 	const dispatch = useDispatch();
 
+	const [loading, setLoading] = useState(false);
+
 	useEffect(() => {
-		dispatch(loadTitle());
+		setLoading(true);
+
+		dispatch(loadTitle()).then(() => {
+			setLoading(false);
+		});
 	}, []);
 
 	// TODO: use useDebounce here too
@@ -24,8 +30,9 @@ const FeatureTitle = props => {
 			<Input
 				className="items-center mt-10 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 				handleChange={handleTitleChange}
-				value={state.title}
+				value={loading ? "Loading title..." : state.title}
 				placeholder="Feature title"
+				disabled={loading}
 			/>
 		</div>
 	);
