@@ -2,27 +2,21 @@ import React, { useState, useEffect } from "react";
 import Input from "../Input/Input";
 
 import { useDispatch, useSelector } from "react-redux";
-import updateTitle from "../../store/actions/feature/updateTitle";
+
+import setTitle from "../../store/actions/feature/setTitle";
+import loadTitle from "../../store/actions/feature/loadTitle";
 
 const FeatureTitle = props => {
 	const state = useSelector(state => state.feature);
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch(loadTitle());
+	}, []);
+
 	// TODO: use useDebounce here too
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		const res = await fetch(
-	// 			"https://test-87a57-default-rtdb.firebaseio.com/",
-	// 			{
-	// 				mode: "no-cors"
-	// 			}
-	// 		);
-	// 	})();
-	// }, [title]);
-
 	const handleTitleChange = event => {
-		dispatch(updateTitle(event.target.value));
+		dispatch(setTitle(event.target.value));
 	};
 
 	return (

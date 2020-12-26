@@ -8,7 +8,7 @@ import "./App.css";
 import { useDispatch } from "react-redux";
 import resetVotes from "../store/actions/users/resetVotes";
 import setHidden from "../store/actions/users/setHidden";
-import updateTitle from "../store/actions/feature/updateTitle";
+import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
 	//TODO: Create api error handlers & outsource logic
@@ -19,7 +19,7 @@ const App = () => {
 
 	const handleReset = () => {
 		dispatch(resetVotes());
-		dispatch(updateTitle(""));
+		dispatch(setTitle(""));
 		dispatch(setHidden(true));
 	};
 

@@ -4,7 +4,7 @@ const initState = {
 
 const featureReducer = (state = initState, action) => {
 	switch (action.type) {
-		case "UPDATE_TITLE": {
+		case "SET_TITLE": {
 			return {
 				title: action.payload
 			};
