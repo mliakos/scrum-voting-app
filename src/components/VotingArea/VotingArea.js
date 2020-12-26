@@ -9,15 +9,23 @@ const VotingArea = props => {
 	const currentUserId = JSON.parse(localStorage.getItem("userId"));
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
+	const { vote } = user ? user[currentUserId] : { vote: null };
+
 	const handleVoteUpdate = event => {
-		const updatedUser = { ...user, vote: Number(event.target.innerText) };
-		console.log(updatedUser);
-		// dispatch(updateUser(updatedUser));
+		const updatedUser = {
+			id: currentUserId,
+			data: {
+				...user[currentUserId],
+				vote: Number(event.target.innerText)
+			}
+		};
+
+		dispatch(updateUser(updatedUser));
 	};
 
 	const buttons = props.options.map((option, index) => {
 		const selectedClass =
-			"vote" === Number(option)
+			vote === Number(option)
 				? "outline-none ring-2 ring-offset-2 ring-indigo-500"
 				: "";
 		return (
