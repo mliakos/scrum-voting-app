@@ -11,11 +11,13 @@ const Heading = props => {
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
 	//TODO: Add debounce
+	//TODO: Add successful update message
 	//TODO: Disable until user is created/loaded
 
 	const handleUserUpdate = event => {
 		const updatedUser = {
-			[currentUserId]: {
+			id: currentUserId,
+			data: {
 				...user[currentUserId],
 				username: event.target.value
 			}

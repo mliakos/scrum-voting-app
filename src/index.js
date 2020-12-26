@@ -15,11 +15,12 @@ import config from "./config/firebase";
 import firebase from "firebase/app";
 import "firebase/database";
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [thunk.withExtraArgument(getFirebase)];
 
 const store = createStore(
 	rootReducer,
-	compose(applyMiddleware(...middlewares))
+	composeEnhancers(applyMiddleware(...middlewares))
 );
 
 ReactDOM.render(

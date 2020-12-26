@@ -36,7 +36,7 @@ const usersReducer = (state = initState, action) => {
 		case "RESET_VOTES":
 			return {
 				...state,
-				users: [...state.users].map(user => ({ ...user, vote: null }))
+				users: action.payload
 			};
 
 		default:
