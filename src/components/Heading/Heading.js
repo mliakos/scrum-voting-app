@@ -6,17 +6,22 @@ const Heading = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUser = JSON.parse(localStorage.getItem("user"));
+	const currentUserId = JSON.parse(localStorage.getItem("userId"));
+
+	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
 	//TODO: Add debounce
+	//TODO: Disable until user is created/loaded
+
 	const handleUserUpdate = event => {
-		const user = state.users.find(user => user.id === currentUser.id);
-		const updatedUser = { ...user, username: event.target.value };
+		const updatedUser = {
+			[currentUserId]: {
+				...user[currentUserId],
+				username: event.target.value
+			}
+		};
 
 		dispatch(updateUser(updatedUser));
-
-		// Save in local storage
-		localStorage.setItem("user", JSON.stringify(updatedUser));
 	};
 
 	return (
@@ -38,7 +43,7 @@ const Heading = props => {
 						label="Username"
 						placeholder="Type a username..."
 						handleChange={event => handleUserUpdate(event)}
-						value={currentUser?.username}
+						value={user ? user[currentUserId].username : "Loading username..."}
 						name="Username"
 						className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 					/>

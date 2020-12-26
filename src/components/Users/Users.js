@@ -29,7 +29,7 @@ const Users = props => {
 		};
 
 		dispatch(loadUsers()).then(e => {
-			// Either create user, or use existing one
+			// Create a user if there is not one
 			if (currentUserId === null) createDefaultUser();
 		});
 	}, []);
@@ -49,7 +49,7 @@ const Users = props => {
 					? state.users.map(user => {
 							// Extracting firebase id (object key)
 							const [userId] = Object.keys(user);
-
+							console.log(currentUserId);
 							return (
 								<li className="py-4" key={userId}>
 									<User

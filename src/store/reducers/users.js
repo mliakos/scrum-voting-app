@@ -16,7 +16,10 @@ const usersReducer = (state = initState, action) => {
 			return {
 				...state,
 				users: [...state.users].map(user => {
-					if (user.id !== action.payload.id) return user;
+					const [stateUserId] = Object.keys(user);
+					const [payloadUserId] = Object.keys(action.payload);
+
+					if (stateUserId !== payloadUserId) return user;
 
 					return action.payload;
 				})

@@ -8,7 +8,9 @@ const loadUsers = () => async (dispatch, getState, getFirebase) => {
 	const users = snapshot.val();
 
 	if (users) {
-		// Dispatching multiple actions
+		// Dispatching action for each loaded user
+		//TODO: Maybe create a separate action 'ADD_USERS'
+
 		for (const [userId, user] of Object.entries(users)) {
 			dispatch({
 				type: ADD_USER,
