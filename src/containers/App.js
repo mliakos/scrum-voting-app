@@ -12,6 +12,8 @@ import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
 	//TODO: Add realtime event handlers
+	//TODO: Add sorting on user vote revelation
+	//TODO: Add reset button disabled by default and enabled on user vote revelation
 
 	const dispatch = useDispatch();
 
