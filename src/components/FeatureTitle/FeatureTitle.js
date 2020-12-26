@@ -20,7 +20,6 @@ const FeatureTitle = props => {
 		});
 	}, []);
 
-	// TODO: use useDebounce here too
 	const handleTitleChange = event => {
 		dispatch(setTitle(event.target.value));
 	};

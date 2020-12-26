@@ -33,7 +33,7 @@ const usersReducer = (state = initState, action) => {
 			};
 		}
 
-		case "RESET_VOTES":
+		case "SET_USERS":
 			return {
 				...state,
 				users: action.payload

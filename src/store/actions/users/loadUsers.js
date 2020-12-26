@@ -1,11 +1,10 @@
 import { ADD_USER } from "../../constants/users";
+import firebaseLoadUsers from "../../../firebase/users/loadUsers";
 
 const loadUsers = () => async (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 
-	const snapshot = await firebase.ref(`users`).once("value");
-
-	const users = snapshot.val();
+	const users = await firebaseLoadUsers({ firebase });
 
 	if (users) {
 		// Dispatching action for each loaded user

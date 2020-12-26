@@ -9,6 +9,7 @@ import addUser from "../../store/actions/users/addUser";
 import loadUsers from "../../store/actions/users/loadUsers";
 
 import setHidden from "../../store/actions/users/setHidden";
+import loadHidden from "../../store/actions/users/loadHidden";
 
 const Users = props => {
 	const dispatch = useDispatch();
@@ -28,7 +29,10 @@ const Users = props => {
 			dispatch(addUser(payload));
 		};
 
-		dispatch(loadUsers()).then(() => {
+		const loadHiddenPromise = dispatch(loadHidden());
+		const loadUsersPromise = dispatch(loadUsers());
+
+		Promise.all([(loadHiddenPromise, loadUsersPromise)]).then(() => {
 			// Create a user if there is not one
 			if (currentUserId === null) createDefaultUser();
 		});

@@ -1,24 +1,23 @@
 import { SET_TITLE } from "../../constants/feature";
+import firebaseUpdateTitle from "../../../firebase/feature/updateTitle";
 
 const setTitle = payload => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 	const state = getState();
 
-	const oldTitle = state.feature.title;
+	const {
+		feature: { title: oldState }
+	} = state;
 
-	firebase
-		.ref(`feature/title`)
-		.set(payload)
-		.then(error => {
-			// Revert to old state in case of error
-			if (error) {
-				dispatch({
-					type: SET_TITLE,
-					payload: oldTitle
-				});
-				alert("There was an error performing the request.");
-			}
-		});
+	const config = {
+		ref: "feature/title",
+		payload,
+		oldState,
+		firebase,
+		dispatch
+	};
+
+	firebaseUpdateTitle(config);
 
 	// Dispatch asynchronously to maintain a responsive UI
 	dispatch({

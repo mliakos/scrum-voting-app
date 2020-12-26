@@ -1,21 +1,28 @@
 import { SET_HIDDEN } from "../../constants/users";
+import firebaseSetHidden from "../../../firebase/users/setHidden";
 
 const setHidden = payload => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 
-	firebase
-		.ref(`hidden`)
-		.set(payload)
-		.then(error => {
-			if (!error) {
-				dispatch({
-					type: SET_HIDDEN,
-					payload
-				});
-			} else {
-				alert("There was an error performing the request.");
-			}
-		});
+	const {
+		users: { hidden: oldState }
+	} = getState();
+
+	const config = {
+		ref: "hidden",
+		payload,
+		oldState,
+		firebase,
+		dispatch
+	};
+
+	firebaseSetHidden(config);
+
+	// Dispatch asynchronously to maintain a responsive UI
+	dispatch({
+		type: SET_HIDDEN,
+		payload
+	});
 };
 
 export default setHidden;

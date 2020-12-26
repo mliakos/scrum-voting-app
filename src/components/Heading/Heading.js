@@ -10,7 +10,6 @@ const Heading = props => {
 
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
-	//TODO: Add debounce
 	//TODO: Add successful update message
 
 	const handleUserUpdate = event => {

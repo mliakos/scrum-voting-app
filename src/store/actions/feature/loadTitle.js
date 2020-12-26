@@ -1,11 +1,10 @@
 import { SET_TITLE } from "../../constants/feature";
+import firebaseLoadTitle from "../../../firebase/feature/loadTitle";
 
 const loadTitle = () => async (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 
-	const snapshot = await firebase.ref(`feature/title`).once("value");
-
-	const title = snapshot.val();
+	const title = await firebaseLoadTitle({ firebase });
 
 	if (title) {
 		dispatch({

@@ -11,10 +11,7 @@ import setHidden from "../store/actions/users/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
-	//TODO: Create api error handlers & outsource logic
 	//TODO: Add realtime event handlers
-	//TODO: Maybe add utility to convert state to firebase document
-	//TODO: Make UI more responsive, by immediately updating it
 
 	const dispatch = useDispatch();
 

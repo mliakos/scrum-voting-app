@@ -1,24 +1,22 @@
 import { UPDATE_USER } from "../../constants/users";
+import firebaseUpdateUser from "../../../firebase/users/updateUser";
 
 const updateUser = ({ id, data }) => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 	const state = getState();
 
-	const [oldUser] = state.users.users.filter(user => user[id]);
+	const [oldState] = state.users.users.filter(user => user[id]);
 
-	firebase
-		.ref(`users/${id}`)
-		.set(data)
-		.then(error => {
-			// Revert to old state in case of error
-			if (error) {
-				dispatch({
-					type: UPDATE_USER,
-					payload: oldUser
-				});
-				alert("There was an error performing the request.");
-			}
-		});
+	const config = {
+		ref: `users/${id}`,
+		payload: data,
+		oldState,
+		firebase,
+		dispatch,
+		resetActionType: UPDATE_USER
+	};
+
+	firebaseUpdateUser(config);
 
 	// Dispatch asynchronously to maintain a responsive UI
 	dispatch({
