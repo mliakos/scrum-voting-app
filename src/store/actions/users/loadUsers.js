@@ -1,26 +1,25 @@
 import { ADD_USER } from "../../constants/users";
 
-const loadUsers = () => (dispatch, getState, getFirebase) => {
+const loadUsers = () => async (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 
-	firebase
-		.ref(`users`)
-		.once("value")
-		.then(snapshot => {
-			const users = snapshot.val();
+	const snapshot = await firebase.ref(`users`).once("value");
 
-			if (users) {
-				// Dispatching multiple actions
-				for (const [userId, user] of Object.entries(users)) {
-					dispatch({
-						type: ADD_USER,
-						payload: {
-							[userId]: user
-						}
-					});
+	const users = snapshot.val();
+
+	if (users) {
+		// Dispatching multiple actions
+		for (const [userId, user] of Object.entries(users)) {
+			dispatch({
+				type: ADD_USER,
+				payload: {
+					[userId]: user
 				}
-			}
-		});
+			});
+		}
+	}
+
+	return Promise.resolve();
 };
 
 export default loadUsers;

@@ -28,15 +28,10 @@ const Users = props => {
 			dispatch(addUser(payload));
 		};
 
-		// Either create user, or use existing one
-		if (currentUserId === null) {
-			createDefaultUser();
-
-			//FIXME: Bug resulting in double rendering when creating default user AND loading existing ones
-			dispatch(loadUsers());
-		} else {
-			dispatch(loadUsers());
-		}
+		dispatch(loadUsers()).then(e => {
+			// Either create user, or use existing one
+			if (currentUserId === null) createDefaultUser();
+		});
 	}, []);
 
 	const revealVotes = () => {
@@ -46,7 +41,6 @@ const Users = props => {
 	const loadingMsg = currentUserId
 		? "Loading users..."
 		: "Generating default user...";
-	console.log(state);
 
 	const UsersList = (
 		<div className="flow-root">
@@ -70,7 +64,7 @@ const Users = props => {
 			</ul>
 		</div>
 	);
-	console.log(state);
+
 	return (
 		<Card className="my-10">
 			<div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
