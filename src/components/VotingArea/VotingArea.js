@@ -34,6 +34,7 @@ const VotingArea = props => {
 				className={`${selectedClass} px-4 py-2 m-2 inline-flex items-center  border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none`}
 				key={index}
 				onClick={event => handleVoteUpdate(event)}
+				disabled={user ? false : true}
 			>
 				{option}
 			</button>
