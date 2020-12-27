@@ -11,7 +11,6 @@ import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
-	//TODO: Create util function for local storage uid fetching and setting
 	//TODO: Write some tests
 	//TODO: Add some comments
 

@@ -1,5 +1,5 @@
 const initState = {
-	title: ""
+	title: null
 };
 
 const featureReducer = (state = initState, action) => {
