@@ -5,7 +5,7 @@ import VotingArea from "../components/VotingArea/VotingArea";
 import Users from "../components/Users/Users";
 import "./App.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import resetVotes from "../store/actions/users/resetVotes";
 import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
@@ -14,8 +14,11 @@ const App = () => {
 	//TODO: Add reset button disabled by default and enabled on user vote revelation
 	//TODO: Refactor reducers [...state] to state (because HOFs return new arrays)
 	//TODO: Create util function for local storage uid fetching and setting
+	//TODO: Write some tests
 
 	const dispatch = useDispatch();
+	const hidden = useSelector(state => state.users.hidden);
+	console.log(hidden);
 
 	const handleReset = () => {
 		dispatch(resetVotes());
@@ -28,7 +31,7 @@ const App = () => {
 			<Heading />
 			<div className="flex flex-col flex-wrap max-w-3xl mx-auto mt-10">
 				<div className="flex justify-center">
-					<Button title="Reset" handleClick={handleReset} />
+					<Button title="Reset" handleClick={handleReset} disabled={hidden} />
 				</div>
 				<div className="flex justify-center">
 					<FeatureTitle />
