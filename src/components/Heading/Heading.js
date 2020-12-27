@@ -34,18 +34,12 @@ const Heading = props => {
 			</div>
 			<div className="mt-10 flex md:mt-0 md:ml-4 justify-center">
 				<div>
-					<label
-						htmlFor="Username"
-						className="block text-sm font-medium text-gray-700"
-					>
-						Username
-					</label>
 					<Input
 						label="Username"
 						placeholder="Type a username..."
 						handleChange={event => handleUserUpdate(event)}
 						value={user ? user[currentUserId].username : "Loading username..."}
-						name="Username"
+						name="username"
 						className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						disabled={user ? false : true}
 					/>

@@ -11,11 +11,15 @@ import { useEffect } from "react";
 import resetVotes from "../store/actions/users/resetVotes";
 import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
+import removeUser from "../store/actions/users/removeUser";
 
 // Listeners imports
 import setupRootStateListeners from "../store/actions/setupFirebaseListeners";
 import setupFeatureListeners from "../store/actions/users/setupFirebaseListeners";
 import setupUsersListeners from "../store/actions/feature/setupFirebaseListeners";
+import getLocalStorage from "../utils/getLocalStorage";
+
+import createDefaultUser from "../common/createDefaultUser";
 
 const App = () => {
 	//TODO: Write some tests
@@ -41,12 +45,28 @@ const App = () => {
 		dispatch(setHidden(true));
 	};
 
+	const handleRefreshUser = () => {
+		dispatch(removeUser(getLocalStorage("userId")));
+		createDefaultUser(dispatch);
+	};
+
 	return (
 		<main className="max-w-7xl mx-auto my-5 px-4 sm:px-6 lg:px-8">
 			<Heading />
 			<div className="flex flex-col flex-wrap max-w-3xl mx-auto mt-10">
 				<div className="flex justify-center">
-					<Button title="Reset" handleClick={handleReset} disabled={hidden} />
+					<Button
+						title="Reset Session"
+						handleClick={handleReset}
+						disabled={hidden}
+						className="mr-3"
+					/>
+					<Button
+						title="Refresh User"
+						handleClick={handleRefreshUser}
+						disabled={false}
+						className="ml-3"
+					/>
 				</div>
 				<div className="flex justify-center">
 					<FeatureTitle />
