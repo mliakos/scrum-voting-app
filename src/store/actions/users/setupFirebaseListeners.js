@@ -1,3 +1,6 @@
+import getLocalStorage from "../../../utils/getLocalStorage";
+import setLocalStorage from "../../../utils/setLocalStorage";
+
 const setupUsersListener = () => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 	const usersRef = firebase.database().ref("users");
@@ -16,17 +19,19 @@ const setupUsersListener = () => (dispatch, getState, getFirebase) => {
 
 	/* Users loading and new user handling */
 	usersRef.on("child_added", snapshot => {
+		const user = snapshot.val();
+		const { username } = user;
 		const { key } = snapshot;
 
-		//FIXME: Avoid saving each users id, target only self
-
-		// Save in local storage
-		localStorage.setItem("userId", JSON.stringify(key));
+		if (username === getLocalStorage("username")) {
+			// Save user id in local storage if it matches own username
+			setLocalStorage({ key: "userId", value: key });
+		}
 
 		dispatch({
 			type: "ADD_USER",
 			payload: {
-				[key]: snapshot.val()
+				[key]: user
 			}
 		});
 	});

@@ -3,13 +3,13 @@ import updateUser from "../../store/actions/users/updateUser";
 import { useDispatch, useSelector } from "react-redux";
 
 // Utility imports
-import getUid from "../../utils/getUid";
+import getLocalStorage from "../../utils/getLocalStorage";
 
 const VotingArea = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = getUid();
+	const currentUserId = getLocalStorage("userId");
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
 	const { vote } = user ? user[currentUserId] : { vote: null };

@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import updateUser from "../../store/actions/users/updateUser";
 
 // Utility imports
-import getUid from "../../utils/getUid";
+import getLocalStorage from "../../utils/getLocalStorage";
 
 const Heading = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = getUid();
+	const currentUserId = getLocalStorage("userId");
 
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 

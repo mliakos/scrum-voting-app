@@ -10,13 +10,13 @@ import addUser from "../../store/actions/users/addUser";
 import setHidden from "../../store/actions/setHidden";
 
 // Utility imports
-import getUid from "../../utils/getUid";
+import getLocalStorage from "../../utils/getLocalStorage";
 
 const Users = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = getUid();
+	const currentUserId = getLocalStorage("userId");
 
 	// Default user creation handling
 	useEffect(() => {
