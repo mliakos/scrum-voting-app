@@ -32,7 +32,7 @@ const Users = props => {
 		const loadHiddenPromise = dispatch(loadHidden());
 		const loadUsersPromise = dispatch(loadUsers());
 
-		Promise.all([(loadHiddenPromise, loadUsersPromise)]).then(() => {
+		Promise.all([loadHiddenPromise, loadUsersPromise]).then(() => {
 			// Create a user if there is not one
 			if (currentUserId === null) createDefaultUser();
 		});

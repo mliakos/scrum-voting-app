@@ -1,5 +1,5 @@
 import debounce from "../../utils/debounce";
-import { ADD_USER, SET_USERS } from "../../constants/users";
+import { ADD_USER, SET_USERS } from "../../store/constants/users";
 
 const addUser = ({ ref, payload, oldState, firebase, dispatch }) => {
 	firebase
