@@ -16,7 +16,6 @@ const App = () => {
 
 	const dispatch = useDispatch();
 	const hidden = useSelector(state => state.users.hidden);
-	console.log(hidden);
 
 	const handleReset = () => {
 		dispatch(resetVotes());

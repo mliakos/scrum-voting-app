@@ -1,4 +1,4 @@
-import { SET_TITLE } from "../../store/constants/feature";
+import { SET_TITLE } from "../../constants/feature";
 
 const setupFeatureListeners = () => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();

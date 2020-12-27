@@ -10,9 +10,9 @@ import addUser from "../../store/actions/users/addUser";
 import setHidden from "../../store/actions/setHidden";
 
 // Listeners imports
-import setupRootStateListeners from "../../firebase/setupListeners";
-import setupFeatureListeners from "../../firebase/feature/setupListeners";
-import setupUsersListeners from "../../firebase/users/setupListeners";
+import setupRootStateListeners from "../../store/actions/setupFirebaseListeners";
+import setupFeatureListeners from "../../store/actions/users/setupFirebaseListeners";
+import setupUsersListeners from "../../store/actions/feature/setupFirebaseListeners";
 
 // Utility imports
 import getUid from "../../utils/getUid";
