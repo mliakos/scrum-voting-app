@@ -5,11 +5,14 @@ import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
+// Actions imports
 import addUser from "../../store/actions/users/addUser";
-import loadUsers from "../../store/actions/users/loadUsers";
+import setHidden from "../../store/actions/setHidden";
 
-import setHidden from "../../store/actions/users/setHidden";
-import loadHidden from "../../store/actions/users/loadHidden";
+// Listeners imports
+import setupRootStateListeners from "../../firebase/setupListeners";
+import setupFeatureListeners from "../../firebase/feature/setupListeners";
+import setupUsersListeners from "../../firebase/users/setupListeners";
 
 const Users = props => {
 	const dispatch = useDispatch();
@@ -17,7 +20,7 @@ const Users = props => {
 
 	const currentUserId = JSON.parse(localStorage.getItem("userId"));
 
-	// Initial page visit handling
+	// Default user creation handling
 	useEffect(() => {
 		const createDefaultUser = () => {
 			const suffix = Math.random().toString(20).substr(2, 6);
@@ -29,13 +32,19 @@ const Users = props => {
 			dispatch(addUser(payload));
 		};
 
-		const loadHiddenPromise = dispatch(loadHidden());
-		const loadUsersPromise = dispatch(loadUsers());
+		// Create a user if there is not one
+		if (currentUserId === null) createDefaultUser();
+	}, []);
 
-		Promise.all([loadHiddenPromise, loadUsersPromise]).then(() => {
-			// Create a user if there is not one
-			if (currentUserId === null) createDefaultUser();
-		});
+	// Setting up listeners
+	useEffect(() => {
+		dispatch(setupUsersListeners());
+		dispatch(setupRootStateListeners());
+		dispatch(setupFeatureListeners());
+
+		return () => {
+			// Detach listeners
+		};
 	}, []);
 
 	const revealVotes = () => {

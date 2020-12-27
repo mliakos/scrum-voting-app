@@ -1,5 +1,5 @@
-import { SET_HIDDEN } from "../../constants/users";
-import firebaseSetHidden from "../../../firebase/users/setHidden";
+import { SET_HIDDEN } from "../constants/users";
+import firebaseSetHidden from "../../firebase/setHidden";
 
 const setHidden = payload => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();

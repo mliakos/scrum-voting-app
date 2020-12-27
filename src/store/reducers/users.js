@@ -12,6 +12,17 @@ const usersReducer = (state = initState, action) => {
 			};
 		}
 
+		case "REMOVE_USER": {
+			return {
+				...state,
+				users: state.users.filter(user => {
+					const [stateUserId] = Object.keys(user);
+
+					return action.payload !== stateUserId;
+				})
+			};
+		}
+
 		case "UPDATE_USER": {
 			return {
 				...state,
