@@ -14,6 +14,7 @@ import setupRootStateListeners from "../../firebase/setupListeners";
 import setupFeatureListeners from "../../firebase/feature/setupListeners";
 import setupUsersListeners from "../../firebase/users/setupListeners";
 
+// Utility imports
 import getUid from "../../utils/getUid";
 
 const Users = props => {

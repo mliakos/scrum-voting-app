@@ -1,6 +1,8 @@
 import Input from "../Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import updateUser from "../../store/actions/users/updateUser";
+
+// Utility imports
 import getUid from "../../utils/getUid";
 
 const Heading = props => {
@@ -10,8 +12,6 @@ const Heading = props => {
 	const currentUserId = getUid();
 
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
-
-	//TODO: Add successful update message
 
 	const handleUserUpdate = event => {
 		const updatedUser = {

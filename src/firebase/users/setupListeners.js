@@ -1,4 +1,4 @@
-const setupUsersListener = payload => (dispatch, getState, getFirebase) => {
+const setupUsersListener = () => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase();
 	const usersRef = firebase.database().ref("users");
 

@@ -1,4 +1,4 @@
-import { ADD_USER, SET_USERS } from "../../store/constants/users";
+import { SET_USERS } from "../../store/constants/users";
 
 const addUser = ({ ref, payload, oldState, firebase, dispatch }) => {
 	firebase

@@ -1,6 +1,8 @@
 import Card from "../Card/Card";
 import updateUser from "../../store/actions/users/updateUser";
 import { useDispatch, useSelector } from "react-redux";
+
+// Utility imports
 import getUid from "../../utils/getUid";
 
 const VotingArea = props => {
