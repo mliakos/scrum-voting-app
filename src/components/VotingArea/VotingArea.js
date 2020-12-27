@@ -1,12 +1,13 @@
 import Card from "../Card/Card";
 import updateUser from "../../store/actions/users/updateUser";
 import { useDispatch, useSelector } from "react-redux";
+import getUid from "../../utils/getUid";
 
 const VotingArea = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = JSON.parse(localStorage.getItem("userId"));
+	const currentUserId = getUid();
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
 	const { vote } = user ? user[currentUserId] : { vote: null };

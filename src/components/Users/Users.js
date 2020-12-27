@@ -14,11 +14,13 @@ import setupRootStateListeners from "../../firebase/setupListeners";
 import setupFeatureListeners from "../../firebase/feature/setupListeners";
 import setupUsersListeners from "../../firebase/users/setupListeners";
 
+import getUid from "../../utils/getUid";
+
 const Users = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = JSON.parse(localStorage.getItem("userId"));
+	const currentUserId = getUid();
 
 	// Default user creation handling
 	useEffect(() => {

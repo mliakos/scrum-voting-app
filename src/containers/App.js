@@ -11,9 +11,9 @@ import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
-	//TODO: Refactor reducers [...state] to state (because HOFs return new arrays)
 	//TODO: Create util function for local storage uid fetching and setting
 	//TODO: Write some tests
+	//TODO: Add some comments
 
 	const dispatch = useDispatch();
 	const hidden = useSelector(state => state.users.hidden);

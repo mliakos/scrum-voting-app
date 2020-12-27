@@ -1,12 +1,13 @@
 import Input from "../Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import updateUser from "../../store/actions/users/updateUser";
+import getUid from "../../utils/getUid";
 
 const Heading = props => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 
-	const currentUserId = JSON.parse(localStorage.getItem("userId"));
+	const currentUserId = getUid();
 
 	const user = state.users.find(user => Object.keys(user)[0] === currentUserId);
 
