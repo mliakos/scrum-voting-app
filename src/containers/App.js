@@ -6,9 +6,16 @@ import Users from "../components/Users/Users";
 import "./App.css";
 
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
 import resetVotes from "../store/actions/users/resetVotes";
 import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
+
+// Listeners imports
+import setupRootStateListeners from "../store/actions/setupFirebaseListeners";
+import setupFeatureListeners from "../store/actions/users/setupFirebaseListeners";
+import setupUsersListeners from "../store/actions/feature/setupFirebaseListeners";
 
 const App = () => {
 	//TODO: Write some tests
@@ -16,6 +23,17 @@ const App = () => {
 
 	const dispatch = useDispatch();
 	const hidden = useSelector(state => state.users.hidden);
+
+	// Setting up listeners
+	useEffect(() => {
+		dispatch(setupUsersListeners());
+		dispatch(setupRootStateListeners());
+		dispatch(setupFeatureListeners());
+
+		return () => {
+			// Detach listeners
+		};
+	}, []);
 
 	const handleReset = () => {
 		dispatch(resetVotes());

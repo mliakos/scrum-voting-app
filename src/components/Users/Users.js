@@ -9,11 +9,6 @@ import { useEffect } from "react";
 import addUser from "../../store/actions/users/addUser";
 import setHidden from "../../store/actions/setHidden";
 
-// Listeners imports
-import setupRootStateListeners from "../../store/actions/setupFirebaseListeners";
-import setupFeatureListeners from "../../store/actions/users/setupFirebaseListeners";
-import setupUsersListeners from "../../store/actions/feature/setupFirebaseListeners";
-
 // Utility imports
 import getUid from "../../utils/getUid";
 
@@ -37,17 +32,6 @@ const Users = props => {
 
 		// Create a user if there is not one
 		if (currentUserId === null) createDefaultUser();
-	}, []);
-
-	// Setting up listeners
-	useEffect(() => {
-		dispatch(setupUsersListeners());
-		dispatch(setupRootStateListeners());
-		dispatch(setupFeatureListeners());
-
-		return () => {
-			// Detach listeners
-		};
 	}, []);
 
 	const revealVotes = () => {
