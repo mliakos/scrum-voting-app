@@ -11,7 +11,6 @@ import setHidden from "../store/actions/setHidden";
 import setTitle from "../store/actions/feature/setTitle";
 
 const App = () => {
-	//TODO: Add reset button disabled by default and enabled on user vote revelation
 	//TODO: Refactor reducers [...state] to state (because HOFs return new arrays)
 	//TODO: Create util function for local storage uid fetching and setting
 	//TODO: Write some tests

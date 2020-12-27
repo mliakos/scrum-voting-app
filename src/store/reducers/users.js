@@ -26,7 +26,7 @@ const usersReducer = (state = initState, action) => {
 		case "UPDATE_USER": {
 			return {
 				...state,
-				users: [...state.users].map(user => {
+				users: state.users.map(user => {
 					const [stateUserId] = Object.keys(user);
 					const [payloadUserId] = Object.keys(action.payload);
 
