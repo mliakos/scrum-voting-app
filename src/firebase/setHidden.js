@@ -1,4 +1,3 @@
-import debounce from "../utils/debounce";
 import { SET_HIDDEN } from "../store/constants/users";
 
 const setHidden = ({ ref, payload, oldState, firebase, dispatch }) => {
@@ -18,4 +17,4 @@ const setHidden = ({ ref, payload, oldState, firebase, dispatch }) => {
 		});
 };
 
-export default debounce(setHidden, 500);
+export default setHidden;

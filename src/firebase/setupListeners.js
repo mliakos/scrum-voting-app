@@ -3,10 +3,11 @@ const setupRootStateListeners = () => (dispatch, getState, getFirebase) => {
 	const dbRef = firebase.database().ref();
 
 	/* Hidden state loading and updates handling */
-	dbRef.on("child_changed", snapshot => {
+	dbRef.on("value", snapshot => {
+		console.log(snapshot.val());
 		dispatch({
 			type: "SET_HIDDEN",
-			payload: snapshot.val()
+			payload: snapshot.val().hidden
 		});
 	});
 };
