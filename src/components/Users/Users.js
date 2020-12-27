@@ -55,28 +55,33 @@ const Users = props => {
 		? "Loading users..."
 		: "Generating default user...";
 
-	const UsersList = (
-		<div className="flow-root">
-			<ul className="divide-y divide-gray-200">
-				{state.users.length
-					? state.users.map(user => {
-							// Extracting firebase id (object key)
-							const [userId] = Object.keys(user);
+	// Duplicating users array to avoid mutating state reference
+	let { users } = state;
 
-							return (
-								<li className="py-4" key={userId}>
-									<User
-										name={user[userId].username}
-										vote={user[userId].vote}
-										own={currentUserId === userId}
-									/>
-								</li>
-							);
-					  })
-					: loadingMsg}
-			</ul>
-		</div>
-	);
+	// Create sorted list only if needed (for performance reasons)
+	if (state.hidden === false) {
+		users = users.sort((prev, next) => {
+			const [prevId] = Object.keys(prev);
+			const [nextId] = Object.keys(next);
+
+			return next[nextId].vote - prev[prevId].vote;
+		});
+	}
+
+	let usersList = users.map(user => {
+		// Extracting firebase id (object key)
+		const [userId] = Object.keys(user);
+
+		return (
+			<li className="py-4" key={userId}>
+				<User
+					name={user[userId].username}
+					vote={user[userId].vote}
+					own={currentUserId === userId}
+				/>
+			</li>
+		);
+	});
 
 	return (
 		<Card className="my-10">
@@ -92,7 +97,13 @@ const Users = props => {
 					</div>
 				</div>
 			</div>
-			<div className="px-4 py-5 sm:p-3">{UsersList}</div>
+			<div className="px-4 py-5 sm:p-3">
+				<div className="flow-root">
+					<ul className="divide-y divide-gray-200">
+						{state.users.length ? usersList : loadingMsg}
+					</ul>
+				</div>
+			</div>
 		</Card>
 	);
 };

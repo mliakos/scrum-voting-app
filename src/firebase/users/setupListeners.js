@@ -18,6 +18,8 @@ const setupUsersListener = payload => (dispatch, getState, getFirebase) => {
 	usersRef.on("child_added", snapshot => {
 		const { key } = snapshot;
 
+		//FIXME: Avoid saving each users id, target only self
+
 		// Save in local storage
 		localStorage.setItem("userId", JSON.stringify(key));
 
