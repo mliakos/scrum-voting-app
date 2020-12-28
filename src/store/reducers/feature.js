@@ -1,10 +1,12 @@
+import * as actionTypes from "../constants/feature";
+
 const initState = {
 	title: null
 };
 
 const featureReducer = (state = initState, action) => {
 	switch (action.type) {
-		case "SET_TITLE": {
+		case actionTypes.SET_TITLE: {
 			return {
 				title: action.payload
 			};

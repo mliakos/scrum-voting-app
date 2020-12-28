@@ -1,3 +1,5 @@
+import * as actionTypes from "../constants/users";
+
 const initState = {
 	users: [],
 	hidden: true
@@ -5,14 +7,14 @@ const initState = {
 
 const usersReducer = (state = initState, action) => {
 	switch (action.type) {
-		case "ADD_USER": {
+		case actionTypes.ADD_USER: {
 			return {
 				...state,
 				users: [...state.users, action.payload]
 			};
 		}
 
-		case "REMOVE_USER": {
+		case actionTypes.REMOVE_USER: {
 			return {
 				...state,
 				users: state.users.filter(user => {
@@ -23,7 +25,7 @@ const usersReducer = (state = initState, action) => {
 			};
 		}
 
-		case "UPDATE_USER": {
+		case actionTypes.UPDATE_USER: {
 			return {
 				...state,
 				users: state.users.map(user => {
@@ -37,14 +39,14 @@ const usersReducer = (state = initState, action) => {
 			};
 		}
 
-		case "SET_HIDDEN": {
+		case actionTypes.SET_HIDDEN: {
 			return {
 				...state,
 				hidden: action.payload
 			};
 		}
 
-		case "SET_USERS":
+		case actionTypes.SET_USERS:
 			return {
 				...state,
 				users: action.payload
