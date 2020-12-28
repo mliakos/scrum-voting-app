@@ -75,7 +75,7 @@ const App = () => {
 					<VotingArea options={[1, 2, 3, 4, 5]} />
 				</div>
 				<div className="flex justify-center">
-					<Users names={["mitsos", "user123", "dimitris"]} />
+					<Users />
 				</div>
 			</div>
 		</main>
