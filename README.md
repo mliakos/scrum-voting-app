@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+From a code challenge:
 
-## Available Scripts
+The goal is to implement a web application that will be used by a remote scrum team, during
+their sprint planning session, to privately vote on the complexity score of a single story
+(task/feature to be implemented).
 
-In the project directory, you can run:
+## Tech stack
 
-### `yarn start`
+- React & Redux
+- Tailwind CSS
+- Firebase
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Live: https://manos-liakos.dev/scrum-voting-app/
 
-### `yarn test`
+![Scrum Voting App Demo](./demo/scrum-voting-app.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+- Full-fledged real-time implementation (all updates happen real-time).
+- Each client gets assigned a default username when first visiting the app.
+- User refresh functionality (create a new user)
+- Any participant can edit his/her username, as well as the feature title.
+- Any participant can vote and reveal all votes, effectivelly ending the session.
+- While votes are hidden, any participant that has voted gets a "Voted!" message next to his/her username.
+- When votes are revealed, users get reordered based on their votes. After that, anyone is able to reset the session, clearing all votes and resetting the feature title.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Using the development build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Download and install the latest LTS version of Node.js.
+2. Open a terminal in root directory and run 'npm install', to install all the necessary node modules.
+3. When finished run 'npm start' to start the development server.
+4. Open a browser and visit 'localhost:3000'.
 
-### `yarn eject`
+### Using the production build
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Open a terminal in root directory and run "npm run-script build".
+2. Once project building is finished, run "npm install -g serve" to install a local static file server.
+3. Run "serve -s build" to start the app.
+4. Visit localhost:5000 (see instructions in terminal).
