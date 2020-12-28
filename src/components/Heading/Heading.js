@@ -5,7 +5,7 @@ import updateUser from "../../store/actions/users/updateUser";
 // Utility imports
 import getLocalStorage from "../../utils/getLocalStorage";
 
-const Heading = props => {
+const Heading = () => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Card = props => {
 	return (
 		<div
@@ -6,6 +8,10 @@ const Card = props => {
 			{props.children}
 		</div>
 	);
+};
+
+Card.propTypes = {
+	className: PropTypes.string
 };
 
 export default Card;

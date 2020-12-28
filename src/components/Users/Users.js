@@ -13,7 +13,7 @@ import getLocalStorage from "../../utils/getLocalStorage";
 
 import createDefaultUser from "../../common/createDefaultUser";
 
-const Users = props => {
+const Users = () => {
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.users);
 

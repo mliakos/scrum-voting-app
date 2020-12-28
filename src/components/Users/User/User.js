@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const User = props => {
 	const state = useSelector(state => state.users);
@@ -26,6 +27,12 @@ const User = props => {
 			</div>
 		</div>
 	);
+};
+
+User.propTypes = {
+	vote: PropTypes.number.isRequired,
+	own: PropTypes.bool.isRequired,
+	name: PropTypes.string.isRequired
 };
 
 export default User;

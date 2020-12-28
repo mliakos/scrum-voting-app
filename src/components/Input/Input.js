@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Input = props => {
 	const label = props.label ? (
@@ -24,6 +25,15 @@ const Input = props => {
 			/>
 		</React.Fragment>
 	);
+};
+
+Input.propTypes = {
+	label: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
+	onChange: PropTypes.func,
+	value: PropTypes.string.isRequired,
+	disabled: PropTypes.bool.isRequired
 };
 
 export default Input;

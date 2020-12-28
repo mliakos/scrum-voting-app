@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Button = props => {
 	return (
 		<button
@@ -9,6 +11,12 @@ const Button = props => {
 			{props.title}
 		</button>
 	);
+};
+
+Button.propTypes = {
+	className: PropTypes.string,
+	onClick: PropTypes.func,
+	disabled: PropTypes.bool.isRequired
 };
 
 export default Button;

@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import updateUser from "../../store/actions/users/updateUser";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 // Utility imports
 import getLocalStorage from "../../utils/getLocalStorage";
@@ -52,6 +53,10 @@ const VotingArea = props => {
 			{buttons}
 		</Card>
 	);
+};
+
+VotingArea.propTypes = {
+	options: PropTypes.array.isRequired
 };
 
 export default VotingArea;

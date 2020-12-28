@@ -1,10 +1,9 @@
 import Input from "../Input/Input";
 
 import { useDispatch, useSelector } from "react-redux";
-
 import setTitle from "../../store/actions/feature/setTitle";
 
-const FeatureTitle = props => {
+const FeatureTitle = () => {
 	const title = useSelector(state => state.feature.title);
 	const dispatch = useDispatch();
 
