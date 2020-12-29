@@ -30,7 +30,7 @@ const User = props => {
 };
 
 User.propTypes = {
-	vote: PropTypes.number.isRequired,
+	vote: PropTypes.number,
 	own: PropTypes.bool.isRequired,
 	name: PropTypes.string.isRequired
 };
