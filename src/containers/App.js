@@ -22,9 +22,6 @@ import getLocalStorage from "../utils/getLocalStorage";
 import createDefaultUser from "../common/createDefaultUser";
 
 const App = () => {
-	//TODO: Write some tests
-	//TODO: Add some comments
-
 	const dispatch = useDispatch();
 	const hidden = useSelector(state => state.users.hidden);
 
@@ -33,10 +30,6 @@ const App = () => {
 		dispatch(setupUsersListeners());
 		dispatch(setupRootStateListeners());
 		dispatch(setupFeatureListeners());
-
-		return () => {
-			// Detach listeners
-		};
 	}, []);
 
 	const handleReset = () => {
