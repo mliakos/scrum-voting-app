@@ -15,8 +15,8 @@ import removeUser from "../store/actions/users/removeUser";
 
 // Listeners imports
 import setupRootStateListeners from "../store/actions/setupFirebaseListeners";
-import setupFeatureListeners from "../store/actions/users/setupFirebaseListeners";
-import setupUsersListeners from "../store/actions/feature/setupFirebaseListeners";
+import setupFeatureListeners from "../store/actions/feature/setupFirebaseListeners";
+import setupUsersListeners from "../store/actions/users/setupFirebaseListeners";
 import getLocalStorage from "../utils/getLocalStorage";
 
 import createDefaultUser from "../common/createDefaultUser";
