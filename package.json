@@ -1,6 +1,6 @@
 {
   "name": "scrum-voting-app",
-  "homepage": "https://manos-liakos.dev/scrum-voting-app",
+  "homepage": "https://scrum.mliakos.dev",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
